@@ -7,5 +7,6 @@
     <color name="primary_yellow">#FDC52A</color>
     <color name="border_red">#8B191D</color>
     <color name="accent_green">#23BE96</color>
+    <color name="table_blue">#0092ff</color>
     <color name="table_row_bg">#1A1F26</color>
 </resources>
