@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_background"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="24dp">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/eagle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="KHARGA KALATEER DRONE DETECTOR"
+            android:textColor="@color/primary_yellow"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/dark_background"
+                android:text="RESET SYSTEM CACHE"
+                android:textColor="@color/border_red"
+                android:textSize="14sp"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/dark_background"
+                android:text="MODE: Omni / Directional"
+                android:textColor="@color/border_red"
+                android:textSize="14sp"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Threat Log"
+                android:textColor="@color/accent_green"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:shrinkColumns="*"
+                android:stretchColumns="*"
+                android:background="#0DFFFFFF">
+
+                <TableRow
+                    android:padding="10dp"
+                    android:background="#22FFFFFF">
+                    <TextView android:text="Freq" android:textColor="@color/primary_yellow" android:textStyle="bold" android:textSize="18sp" android:layout_weight="1" />
+                    <TextView android:text="Power" android:textColor="@color/primary_yellow" android:textStyle="bold" android:textSize="18sp" android:gravity="center" android:layout_weight="1" />
+                    <TextView android:text="Brg" android:textColor="@color/primary_yellow" android:textStyle="bold" android:textSize="18sp" android:gravity="end" android:layout_weight="1" />
+                </TableRow>
+
+                <TableRow android:padding="10dp">
+                    <TextView android:text="2415" android:textColor="@color/primary_yellow" android:textSize="16sp" android:layout_weight="1" />
+                    <TextView android:text="-26.93" android:textColor="@color/primary_yellow" android:textSize="16sp" android:gravity="center" android:layout_weight="1" />
+                    <TextView android:text="0.0°" android:textColor="@color/primary_yellow" android:textSize="16sp" android:gravity="end" android:layout_weight="1" />
+                </TableRow>
+
+                <TableRow android:padding="10dp">
+                    <TextView android:text="2460" android:textColor="@color/primary_yellow" android:textSize="16sp" android:layout_weight="1" />
+                    <TextView android:text="-39.45" android:textColor="@color/primary_yellow" android:textSize="16sp" android:gravity="center" android:layout_weight="1" />
+                    <TextView android:text="0.0°" android:textColor="@color/primary_yellow" android:textSize="16sp" android:gravity="end" android:layout_weight="1" />
+                </TableRow>
+
+                <TableRow android:padding="10dp">
+                    <TextView android:text="2560" android:textColor="@color/primary_yellow" android:textSize="16sp" android:layout_weight="1" />
+                    <TextView android:text="-33.64" android:textColor="@color/primary_yellow" android:textSize="16sp" android:gravity="center" android:layout_weight="1" />
+                    <TextView android:text="0.0°" android:textColor="@color/primary_yellow" android:textSize="16sp" android:gravity="end" android:layout_weight="1" />
+                </TableRow>
+            </TableLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Spectrum Analyzer"
+                android:textColor="@color/primary_yellow"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:background="#1AFFFFFF" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="24dp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MAP OVERVIEW"
+                android:textColor="#88FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp" />
+
+            <FrameLayout
+                android:id="@+id/mapContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="25dp"
+                android:background="#1AFFFFFF">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="MAP AREA"
+                    android:textColor="#FFFFFF" />
+            </FrameLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
