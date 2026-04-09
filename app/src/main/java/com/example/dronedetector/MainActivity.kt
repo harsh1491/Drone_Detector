@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mapView: MapView
     private var mapLibreMap: MapLibreMap? = null
 
+    private var isCompassMode = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,6 +39,10 @@ class MainActivity : AppCompatActivity() {
         // 3. Setup My Location Button click listener
         findViewById<ImageButton>(R.id.btnMyLocation).setOnClickListener {
             handleMyLocationClick()
+        }
+
+        findViewById<ImageButton>(R.id.btnCompassMode).setOnClickListener {
+            toggleCompassMode()
         }
 
         // 4. Load the Map
@@ -84,6 +90,34 @@ class MainActivity : AppCompatActivity() {
                 arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION),
                 1001
             )
+        }
+    }
+
+    private fun toggleCompassMode() {
+        val locationComponent = mapLibreMap?.locationComponent ?: return
+
+        if (!PermissionManager.hasLocationPermission(this)) {
+            handleMyLocationClick() // This will trigger the permission request
+            return
+        }
+
+        isCompassMode = !isCompassMode
+
+        if (isCompassMode) {
+            // Mode 2: Map rotates as you turn the tablet
+            locationComponent.cameraMode = org.maplibre.android.location.modes.CameraMode.TRACKING_COMPASS
+            locationComponent.renderMode = org.maplibre.android.location.modes.RenderMode.COMPASS
+            Toast.makeText(this, "Compass Mode: ON", Toast.LENGTH_SHORT).show()
+        } else {
+            // Mode 1: North stays at the top
+            locationComponent.cameraMode = org.maplibre.android.location.modes.CameraMode.NONE
+            locationComponent.renderMode = org.maplibre.android.location.modes.RenderMode.NORMAL
+
+            // Reset map rotation to North
+            val resetCamera = org.maplibre.android.camera.CameraUpdateFactory.bearingTo(0.0)
+            mapLibreMap?.animateCamera(resetCamera)
+
+            Toast.makeText(this, "Compass Mode: OFF (North Up)", Toast.LENGTH_SHORT).show()
         }
     }
 
