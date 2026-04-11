@@ -16,6 +16,7 @@ import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.MapView
 import org.maplibre.android.maps.Style
 import java.io.File
+import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
     private var mapLibreMap: MapLibreMap? = null
 
     private var isCompassMode = false
+
+    private lateinit var wifiScanner: WifiScanner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +46,17 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<ImageButton>(R.id.btnCompassMode).setOnClickListener {
             toggleCompassMode()
+        }
+
+        wifiScanner = WifiScanner(this)
+
+        findViewById<Button>(R.id.btnWifiList).setOnClickListener {
+            if (PermissionManager.hasLocationPermission(this)) {
+                displayWifiList()
+            } else {
+                // Reuse your existing permission request logic
+                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 1001)
+            }
         }
 
         // 4. Load the Map
@@ -119,6 +133,25 @@ class MainActivity : AppCompatActivity() {
 
             Toast.makeText(this, "Compass Mode: OFF (North Up)", Toast.LENGTH_SHORT).show()
         }
+    }
+
+
+    private fun displayWifiList() {
+        val networks = wifiScanner.getWifiList()
+
+        // Create a simple string to display
+        val sb = StringBuilder()
+        sb.append("SSID | Freq | Signal\n-------------------\n")
+        networks.take(10).forEach { // Show top 10
+            sb.append("${it.ssid} | ${it.freq}MHz | ${it.signal}dBm\n")
+        }
+
+        // Show it in a simple Popup Alert
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("Available WiFi Networks")
+            .setMessage(sb.toString())
+            .setPositiveButton("OK", null)
+            .show()
     }
 
     @SuppressWarnings("MissingPermission")
