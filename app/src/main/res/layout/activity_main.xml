@@ -61,6 +61,7 @@
 
             <Button
                 style="@style/Widget.Material3.Button.OutlinedButton"
+                android:id="@+id/btnResetCache"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -107,111 +108,36 @@
                     android:textSize="12sp" />
             </LinearLayout>
 
-            <TableLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="#0DFFFFFF"
-                android:shrinkColumns="*"
-                android:stretchColumns="*">
+                android:layout_height="200dp"
+                android:scrollbars="vertical">
 
-                <TableRow
-                    android:background="#22FFFFFF"
-                    android:padding="10dp">
+                <TableLayout
+                    android:id="@+id/tableLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="0,1,2">
 
-                    <TextView
-                        android:layout_weight="1"
-                        android:text="Freq"
-                        android:textColor="@color/primary_yellow"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                    <TableRow android:background="#444444">
+                        <TextView android:text="Freq" android:textSize="18sp" android:textColor="@color/primary_yellow" android:padding="8dp" android:textStyle="bold"/>
+                        <TextView android:text="Power" android:textSize="18sp" android:textColor="@color/primary_yellow" android:padding="8dp" android:textStyle="bold"/>
+                        <TextView android:text="Bearing" android:textSize="18sp" android:textColor="@color/primary_yellow" android:padding="8dp" android:textStyle="bold"/>
+                        <TextView android:text="Device" android:textSize="18sp" android:textColor="@color/primary_yellow" android:padding="8dp" android:textStyle="bold"/>
 
-                    <TextView
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Power"
-                        android:textColor="@color/primary_yellow"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                    </TableRow>
 
-                    <TextView
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="Brg"
-                        android:textColor="@color/primary_yellow"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </TableRow>
+                </TableLayout>
+            </ScrollView>
 
-                <TableRow android:padding="10dp">
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:text="2415"
-                        android:textColor="@color/table_blue"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="-26.93"
-                        android:textColor="@color/table_blue"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="0.0°"
-                        android:textColor="@color/table_blue"
-                        android:textSize="16sp" />
-                </TableRow>
-
-                <TableRow android:padding="10dp">
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:text="2460"
-                        android:textColor="@color/table_blue"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="-39.45"
-                        android:textColor="@color/table_blue"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="0.0°"
-                        android:textColor="@color/table_blue"
-                        android:textSize="16sp" />
-                </TableRow>
-
-                <TableRow android:padding="10dp">
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:text="2560"
-                        android:textColor="@color/table_blue"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="-33.64"
-                        android:textColor="@color/table_blue"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="0.0°"
-                        android:textColor="@color/table_blue"
-                        android:textSize="16sp" />
-                </TableRow>
-            </TableLayout>
+<!--            <Button-->
+<!--                android:id="@+id/btnTestSdr"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="SIMULATE SDR DATA"-->
+<!--                android:backgroundTint="@color/accent_green"-->
+<!--                android:textColor="@color/dark_background"-->
+<!--                android:layout_marginTop="10dp" />-->
 
             <TextView
                 android:layout_width="wrap_content"
@@ -219,7 +145,8 @@
                 android:layout_marginTop="20dp"
                 android:text="Spectrum Analyzer"
                 android:textColor="@color/primary_yellow"
-                android:textSize="16sp" />
+                android:textStyle="bold"
+                android:textSize="18sp" />
 
             <View
                 android:layout_width="match_parent"

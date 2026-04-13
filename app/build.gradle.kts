@@ -54,4 +54,6 @@ dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
 
     implementation("org.maplibre.gl:android-sdk:11.0.1")
+
+    implementation("com.github.mik3y:usb-serial-for-android:3.7.3")
 }
